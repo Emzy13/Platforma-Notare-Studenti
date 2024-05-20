@@ -1,7 +1,7 @@
 package Studenti;
 
 public class Feedback {
-    private String detalii;
+	private String detalii;
     private Student student;
     private Profesor profesor;
 

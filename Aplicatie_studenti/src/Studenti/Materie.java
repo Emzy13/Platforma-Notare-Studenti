@@ -1,8 +1,8 @@
 package Studenti;
 
 public class Materie {
-    private String numeMaterie;
-    private Profesor profesor;
+	private String numeMaterie;
+    Profesor profesor;
 
     public Materie(String numeMaterie, Profesor profesor) {
         this.numeMaterie = numeMaterie;

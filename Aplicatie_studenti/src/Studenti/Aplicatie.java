@@ -3,34 +3,50 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Aplicatie {
-	public static void main(String[] args) {
-        // Creare instanțe pentru Profesori și Studenți
-        Profesor profesor1 = new Profesor("Ion", "Popescu", "ion.popescu@univ.com", "prof1234");
-        Student student1 = new Student("Ana", "Ionescu", "ana.ionescu@stud.com", "stud1234", "302");
+		public static void main(String[] args) {
+			 Profesor prof1 = new Profesor("Ion", "Popescu", "ion.popescu@email.ro", "password123", null);
+		        Profesor prof2 = new Profesor("Maria", "Ionescu", "maria.ionescu@email.ro", "password123", null);
 
-        // Creare Materii și asocierea cu Medie
-        Medie medieMatematica = new Medie();
-        Materie matematica = new Materie(medieMatematica);
-        profesor1.getMaterii().add(matematica);
-        student1.getMaterii().add(matematica);
+		        // Create instances of Materie
+		        Materie isp = new Materie("ISP", prof1);
+		        Materie am = new Materie("AM", prof2);
 
-        // Creare Secretariat și introducerea notelor
-        Secretara secretariat = new Secretara();
-        secretariat.introduceNote(student1, matematica, 9.5);
-        
-        // Generarea de rapoarte
-        Rapoarte raport = new Rapoarte();
-        raport.genereazaRaportMaterii(Arrays.asList(matematica));
-        raport.genereazaRaportProfesori(Arrays.asList(profesor1));
+		        // Assign Materie to Profesors
+		        prof1.setMaterie(isp);
+		        prof2.setMaterie(am);
 
-        // Managementul feedback-ului
-        Feedback feedback = new Feedback("Cursul de matematica ar putea include mai multe exemple practice.", student1, profesor1);
-        feedback.trimiteFeedback();
-        feedback.raspundeLaFeedback("Mulțumesc pentru sugestie, voi include mai multe exemple în viitor.");
+		        // Create instances of Student
+		        Student student1 = new Student("Alex", "Muresan", "alex.muresan@email.ro", "password123", "A1");
+		        Student student2 = new Student("Elena", "Voinea", "elena.voinea@email.ro", "password123", "A1");
 
-        // Verificare și aplicare pentru bursă
-        Bursa bursa = new Bursa(student1);
-        bursa.verificaEligibilitatea();
-        bursa.aplicaPentruBursa();
-    }
+		        // Secretary assigns grades
+		        Secretara secretara = new Secretara("Livia", "Barbu", "livia.barbu@email.ro", "password321");
+		        secretara.atribuieMaterie(student1, isp, 10);
+		        secretara.atribuieMaterie(student1, am, 9);
+		        secretara.atribuieMaterie(student2, isp, 8);
+		        secretara.atribuieMaterie(student2, am, 7);
+
+		        // Modify a grade
+		        secretara.modificaNota(student1, isp, 8);
+
+		        // Students create and print feedback
+		        Feedback feedback1 = student1.creeazaFeedback("Very good course", isp);
+		        Feedback feedback2 = student2.creeazaFeedback("Needs more examples", am);
+		        System.out.println("Feedback 1: " + feedback1.getDetalii() + " from " + feedback1.getStudent().getNume());
+		        System.out.println("Feedback 2: " + feedback2.getDetalii() + " from " + feedback2.getStudent().getNume());
+
+		        // Generate and use reports
+		        List<Materie> materii = Arrays.asList(isp, am);
+		        List<Profesor> profesori = Arrays.asList(prof1, prof2);
+		        List<Student> studenti = Arrays.asList(student1, student2);
+
+		        Rapoarte rapoarte = new Rapoarte();
+		        secretara.afiseazaRaportMaterii(materii);
+		        secretara.afiseazaRaportProfesori(profesori);
+		        rapoarte.genereazaRaportFinal(studenti); // Explicitly calling with rapoarte object to utilize it
+
+		        // Check and apply for scholarships
+		        student1.aplicarePentruBursa();
+		        student2.aplicarePentruBursa();
+		    }
 }

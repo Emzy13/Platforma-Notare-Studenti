@@ -1,10 +1,10 @@
 package Studenti;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 
 public class Profesor extends Persoana {
-    private Materie materie;
+	private Materie materie;
     private List<Feedback> feedbackuri;
 
     public Profesor(String nume, String prenume, String email, String parola, Materie materie) {
@@ -14,8 +14,8 @@ public class Profesor extends Persoana {
     }
 
     // Getter și Setter pentru numeMaterie
-    public String getNumeMaterie() {
-        return materie.getNumeMaterie();
+    public Materie getMaterie() {
+        return materie;
     }
 
     public void setMaterie(Materie materie) {
@@ -31,4 +31,5 @@ public class Profesor extends Persoana {
     public List<Feedback> getFeedbackuri() {
         return feedbackuri;
     }
+
 }

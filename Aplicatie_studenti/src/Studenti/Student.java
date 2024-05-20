@@ -48,7 +48,11 @@ public class Student extends Persoana {
         Profesor profesor = materie.getProfesor();
         Feedback feedback = new Feedback(detalii, this, profesor);
         feedback.trimiteFeedback();
-        materie.profesor.adaugaFeedback(feedback)
+        materie.getProfesor().adaugaFeedback(feedback);
         return feedback;
+    }
+    public void aplicarePentruBursa() {
+        Bursa bursa = new Bursa(this);
+        bursa.aplicaPentruBursa();
     }
 }
