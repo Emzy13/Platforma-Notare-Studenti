@@ -19,30 +19,28 @@ class TestBursa {
 
     @BeforeEach
     public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));  // Redirect System.out to capture the output
+        System.setOut(new PrintStream(outContent));  
     }
 
     @AfterEach
     public void restoreStreams() {
-        System.setOut(originalOut);  // Restore System.out to its original state
+        System.setOut(originalOut);  
     }
 
     @Test
     void testVerificaEligibilitatea() {
-        // Setup
+
         Student student = new Student("John", "Doe", "john.doe@example.com", "password123", "A1");
-        student.getSituatie().put(new Materie("Matematica", null), 10);  // Ensure grade is high enough for "Bursa de performanta"
-        student.getSituatie().put(new Materie("Fizica", null), 9);  // Additional grade to maintain average above 9.5
+        student.getSituatie().put(new Materie("Matematica", null), 10);  
+        student.getSituatie().put(new Materie("Fizica", null), 9); 
 
         Bursa bursa = new Bursa(student);
 
-        // Action
         bursa.verificaEligibilitatea();
 
-        // Assertion
         String expectedOutput = "Eligibilitate pentru bursă: Bursa de performanta" + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString(),
-                     "The eligibility message should be printed to the console indicating a performance scholarship.");
+                     "Bursa de performanta.");
     }
 }
 

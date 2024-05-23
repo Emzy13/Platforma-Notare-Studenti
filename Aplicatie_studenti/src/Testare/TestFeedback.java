@@ -29,34 +29,30 @@ class TestFeedback {
 
     @Test
     void testTrimiteFeedback() {
-        // Setup
+
         Student student = new Student("John", "Doe", "john.doe@example.com", "password123", "A1");
         Profesor profesor = new Profesor("Jane", "Smith", "jane.smith@example.com", "password123", null);
-        Feedback feedback = new Feedback("This is a feedback message.", student, profesor);
+        Feedback feedback = new Feedback("Mesaj de feedback.", student, profesor);
 
-        // Action
         feedback.trimiteFeedback();
 
-        // Assertion
-        String expectedOutput = "Feedback trimis: This is a feedback message." + System.lineSeparator();
+        String expectedOutput = "Feedback trimis: Mesaj de feedback." + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString(),
-                     "The feedback message should be printed to the console.");
+                     "mesaj de feedback.");
     }
 
     @Test
     void testRaspundeLaFeedback() {
-        // Setup
+
         Student student = new Student("John", "Doe", "john.doe@example.com", "password123", "A1");
         Profesor profesor = new Profesor("Jane", "Smith", "jane.smith@example.com", "password123", null);
-        Feedback feedback = new Feedback("This is a feedback message.", student, profesor);
+        Feedback feedback = new Feedback("Mesaj de feedback.", student, profesor);
 
-        // Action
-        feedback.raspundeLaFeedback("Thank you for your feedback.");
+        feedback.raspundeLaFeedback("Multumesc pentru feedback.");
 
-        // Assertion
-        String expectedOutput = "Răspunsul profesorului: Thank you for your feedback." + System.lineSeparator();
+        String expectedOutput = "Răspunsul profesorului: Multumesc pentru feedback." + System.lineSeparator();
         assertEquals(expectedOutput, outContent.toString(),
-                     "The response message should be printed to the console.");
+                     "Multumesc pentru feedback.");
     }
 }
 

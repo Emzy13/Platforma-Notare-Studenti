@@ -17,7 +17,7 @@ public class Rapoarte {
             System.out.println("Raport pentru Profesor: " + prof.getNume() + " " + prof.getPrenume());
             Materie materie = prof.getMaterie();
             if (materie != null) {
-                System.out.println("Predă materiile: " + materie.getNumeMaterie()); // Ensure materie is not null before calling getNumeMaterie
+                System.out.println("Predă materiile: " + materie.getNumeMaterie()); 
             } else {
                 System.out.println("Nu sunt materii atribuite.");
             }

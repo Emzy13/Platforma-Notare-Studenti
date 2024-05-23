@@ -12,7 +12,6 @@ public class Persoana {
         this.email = email;
         this.parola = parola;
     }
- // Getters
  	public String getNume() {
  	    return nume;
  	}
@@ -29,7 +28,6 @@ public class Persoana {
  	    return parola;
  	}
  	
- 	// Setters
  	public void setNume(String nume) {
  	    this.nume = nume;
  	}

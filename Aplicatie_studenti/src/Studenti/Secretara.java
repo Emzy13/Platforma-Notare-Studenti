@@ -7,12 +7,10 @@ public class Secretara extends Persoana{
 	        super(nume, prenume, email, parola);
 	    }
 
-	    // Metodă pentru a atribui o materie și media aferentă unui student
 	    public void atribuieMaterie(Student student, Materie materie, int media) {
 	        student.getSituatie().put(materie, media);
 	    }
 
-	    // Metodă pentru a modifica nota unei materii pentru un student
 	    public void modificaNota(Student student, Materie materie, int nouaNota) {
 	        if (student.getSituatie().containsKey(materie)) {
 	            student.getSituatie().put(materie, nouaNota);
@@ -21,7 +19,6 @@ public class Secretara extends Persoana{
 	        }
 	    }
 
-	    // Metodă pentru a atribui o materie unui profesor
 	    public void atribuieMaterieProfesor(Profesor profesor, Materie materie) {
 	        profesor.setMaterie(materie);
 	    }

@@ -13,7 +13,6 @@ public class Profesor extends Persoana {
         this.feedbackuri = new ArrayList<>();
     }
 
-    // Getter și Setter pentru numeMaterie
     public Materie getMaterie() {
         return materie;
     }
@@ -22,12 +21,10 @@ public class Profesor extends Persoana {
         this.materie = materie;
     }
 
-    // Metodă pentru adăugarea unui feedback în lista feedbackurilor
     public void adaugaFeedback(Feedback feedback) {
         feedbackuri.add(feedback);
     }
 
-    // Metodă pentru obținerea listei de feedback-uri
     public List<Feedback> getFeedbackuri() {
         return feedbackuri;
     }

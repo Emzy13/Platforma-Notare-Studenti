@@ -12,17 +12,14 @@ public class Student extends Persoana {
         this.situatie = new HashMap<>();
     }
 
-    // Metodă pentru a obține media unei materii
     public Integer obtineMedia(Materie materie) {
         return this.situatie.get(materie);
     }
 
-    // Metodă pentru a obține situația completă
     public Map<Materie, Integer> getSituatie() {
         return situatie;
     }
 
-    // Getter și Setter pentru grupa
     public String getGrupa() {
         return grupa;
     }
@@ -31,7 +28,6 @@ public class Student extends Persoana {
         this.grupa = grupa;
     }
 
-    // Metodă pentru a calcula media generală
     public double medieGenerala() {
         if (situatie.isEmpty()) {
             return 0;
@@ -43,7 +39,6 @@ public class Student extends Persoana {
         return (double) suma / situatie.size();
     }
 
-    // Metodă pentru a crea și trimite un feedback
     public Feedback creeazaFeedback(String detalii, Materie materie) {
         Profesor profesor = materie.getProfesor();
         Feedback feedback = new Feedback(detalii, this, profesor);
@@ -54,5 +49,56 @@ public class Student extends Persoana {
     public void aplicarePentruBursa() {
         Bursa bursa = new Bursa(this);
         bursa.aplicaPentruBursa();
+    }
+    
+    public void completeazaFormular() {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Alege tipul de formular:");
+            System.out.println("1. Formular camin");
+            System.out.println("2. Plata restanta");
+            System.out.println("3. Adeverinta");
+            System.out.print("Introduceti numarul corespunzator formularului dorit: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();  
+
+            switch (choice) {
+                case 1:
+                    completeazaFormularCamin(scanner);
+                    break;
+                case 2:
+                    completeazaPlataRestanta(scanner);
+                    break;
+                case 3:
+                    completeazaAdeverinta(scanner);
+                    break;
+                default:
+                    System.out.println("Optiune invalida.");
+                    break;
+            }
+        } finally {
+            scanner.close();
+        }
+    }
+
+    private void completeazaFormularCamin(Scanner scanner) {
+        System.out.print("Introdu numele si prenumele: ");
+        String numeComplet = scanner.nextLine();
+        System.out.print("Introdu numarul de telefon: ");
+        String telefon = scanner.nextLine();
+        System.out.println("Formular camin completat pentru " + numeComplet + " cu telefon " + telefon);
+    }
+
+    private void completeazaPlataRestanta(Scanner scanner) {
+        System.out.print("Introdu suma restanta: ");
+        double suma = scanner.nextDouble();
+        scanner.nextLine();  
+        System.out.println("Formular de plata restanta completat pentru suma de " + suma + " lei.");
+    }
+
+    private void completeazaAdeverinta(Scanner scanner) {
+        System.out.print("Introdu anul universitar: ");
+        String anUniversitar = scanner.nextLine();
+        System.out.println("Adeverinta completata pentru anul universitar " + anUniversitar);
     }
 }
